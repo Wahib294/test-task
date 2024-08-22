@@ -1,14 +1,13 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
-import { Staff } from "src/staff/entities/staff.entity";
+import { Column, Entity, OneToMany, PrimaryColumn, Unique } from 'typeorm';
+import { Staff } from 'src/staff/entities/staff.entity';
 @Entity()
 @Unique(['name'])
 export class Role {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryColumn({ length: 50 })
+  name: string;
+  @Column('int')
+  id: number;
 
-    @Column({ length: 50 })
-    name: string;
-
-    @OneToMany(() => Staff, staff => staff.role)
-    staff: Staff[];
+  @OneToMany(() => Staff, (staff) => staff.role)
+  staff: Staff[];
 }

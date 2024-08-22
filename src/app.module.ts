@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService} from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RoleModule } from './role/role.module';
 import { StaffModule } from './staff/staff.module';
 import { BugreportModule } from './bugreport/bugreport.module';
@@ -25,13 +25,13 @@ import { RoleService } from './role/role.service';
         type: 'postgres',
         host: configService.get('DB_HOST'),
         port: +configService.get('DB_PORT'),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
+        username: 'postgres',
+        password: '123',
         database: configService.get('DB_DATABASE'),
         synchronize: true,
         entities: [__dirname + '/../**/*.entity.js'],
         logging: true,
-      })
+      }),
     }),
     RoleModule,
     StaffModule,
@@ -41,7 +41,7 @@ import { RoleService } from './role/role.service';
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60m' },
-  }),
+    }),
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, JwtStrategy],

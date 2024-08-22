@@ -1,9 +1,9 @@
 {
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "123",
-    "database": "bug_report",
-    "synchronize": true
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "postgres",
+  "password": "123",
+  "database": "bug_report",
+  "synchronize": true
 }

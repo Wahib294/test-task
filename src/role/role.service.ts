@@ -8,22 +8,23 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class RoleService {
+  constructor(
+    @InjectRepository(Role) private readonly roleRepository: Repository<Role>,
+  ) {}
 
-  constructor(@InjectRepository(Role) private readonly roleRepository : Repository<Role>) {}
-
-  create(createRoleDto: CreateRoleDto) : Promise<Role> {
+  create(createRoleDto: CreateRoleDto): Promise<Role> {
     let role = new Role();
     role.id = createRoleDto.id;
     role.name = createRoleDto.name;
     return this.roleRepository.save(role);
   }
 
-  findAll() : Promise<Role[]> {
+  findAll(): Promise<Role[]> {
     return this.roleRepository.find();
   }
 
-  findOne(id: number) : Promise<Role> {
-    return this.roleRepository.findOneBy({id : id});
+  findOne(name: string): Promise<Role> {
+    return this.roleRepository.findOneBy({ name: name });
   }
 
   update(id: number, updateRoleDto: UpdateRoleDto) {

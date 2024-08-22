@@ -17,10 +17,10 @@ export class BugReport {
     status: true | false;
 
     @ManyToOne(() => Staff, staff => staff.assignedBugReports)
-    assignee: Staff;
+    assignee: number;
 
     @ManyToOne(() => Staff, staff => staff.reportedBugReports)
-    reporter: Staff;
+    reporter: number;
 
     @CreateDateColumn({ type: 'timestamp' })
     createdAt: Date;

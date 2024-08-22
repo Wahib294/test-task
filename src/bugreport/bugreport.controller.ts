@@ -20,8 +20,9 @@ export class BugreportController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bugreportService.findOne(+id);
+  @UseGuards(JwtAuthGuard)
+  async findOne(@Param('id') id: string) {
+    return await this.bugreportService.findOne(+id);
   }
 
   @Patch(':id')

@@ -1,13 +1,48 @@
 
 GET http://localhost:4000/staff
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QxIiwic3ViIjo5LCJyb2xlIjoiRGV2ZWxvcGVyIiwiaWF0IjoxNzI0MzQzNzA5LCJleHAiOjE3MjQzNDczMDl9.A7doui2KBdFpAJ0Fjju_5qTYtFoW8Yx5sZ9J06jefCg
 ###
-POST http://localhost:4000/staff
+POST http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
     "username": "Jazib",
-    "email": "Jazib@email.com",
+    //"email": "Jazibb@email.com",
     "password": "123456",
-     "role": 3
+    "role": "Admin"
 }
+
+###
+GET http://localhost:4000/bugreport
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkphemliIiwic3ViIjo5LCJyb2xlIjp7Im5hbWUiOiJBZG1pbiIsImlkIjoxfSwiaWF0IjoxNzI0MzYzMzA0LCJleHAiOjE3MjQzNjY5MDR9.AUJyNfvQtx_Xy6YJsJq2JJchY9qI-dKt90bG5Epvbr4
+
+###
+POST http://localhost:4000/bugreport
+Content-Type: application/json
+
+{
+    "title": "Bug 1",
+    "description": "This is a bug",
+    "status": true,
+    "reporter": 8,
+    "assignee": 7,
+    "createdAt": "2024-08-23 14:30:00",
+    "updatedAt": "2024-08-23 14:30:00"
+
+}
+###
+GET http://localhost:4000/bugreport
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkphemliIiwic3ViIjo5LCJyb2xlIjp7Im5hbWUiOiJBZG1pbiIsImlkIjoxfSwiaWF0IjoxNzI0MzYzMzA0LCJleHAiOjE3MjQzNjY5MDR9.AUJyNfvQtx_Xy6YJsJq2JJchY9qI-dKt90bG5Epvbr4
+
+###
+POST http://localhost:4000/fileupload
+Content-Type: application/json
+
+{
+    "filename": "file1",
+    "filepath": "C:/Users/HP/Desktop/bugreporting/bugreporting/bugreporting/src/files",
+    "uploadAt": "2024-08-23 14:30:00",
+    "bugreportId": 2
+}
+
+###
+GET http://localhost:4000/fileupload/2

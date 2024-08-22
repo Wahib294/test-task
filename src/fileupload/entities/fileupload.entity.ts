@@ -16,5 +16,5 @@ export class FileUpload {
     uploadedAt: Date;
 
     @ManyToOne(() => BugReport, bugReport => bugReport.fileUploads)
-    bugReportId: BugReport;
+    bugReportId: number;
 }
